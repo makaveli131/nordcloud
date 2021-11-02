@@ -69,7 +69,7 @@ const calculateDistance = (station, point) =>
   );
 
 /**
- * Log each coordinate point with (possible) power output
+ * Log each coordinate point with (possible) power output.
  *
  * @param {Array} stations Link stations
  * @param {Array} points Coordinate points
