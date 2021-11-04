@@ -34,5 +34,9 @@ Print out function output from points (x, y):
 
 ## Solution
 
-run with Node.js:
-`node nord_cloud.js`
+run Azure Function localy:
+`func start`
+
+test with jest:
+`npm test`
+
