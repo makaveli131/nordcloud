@@ -3,21 +3,6 @@
  *  Create a function that finds the most powerful link station for a device at given point [x,y]
  */
 
-// Print out function output from points [x,y]:
-const points = [
-  [0, 0],
-  [100, 100],
-  [15, 10],
-  [18, 18],
-];
-
-// Stations coordinates (x,y) and power (r) => [[x,y], r]
-const stations = [
-  [[0, 0], 10],
-  [[20, 20], 5],
-  [[10, 0], 12],
-];
-
 /**
  * Find the station with most power for each coordinate point.
  *
@@ -26,7 +11,7 @@ const stations = [
  * @returns {Object} {power, point: {x,y}, station: {x,y}}
  */
 const findBestStationForEachPoint = (stations, points) =>
-  points.map(point => {
+  points.map((point) => {
     let power = 0;
     let station = {};
     for (let x = 0; x < stations.length; x++) {
@@ -74,23 +59,24 @@ const calculateDistance = (station, point) =>
  * @param {Array} stations Link stations
  * @param {Array} points Coordinate points
  */
-const logPowerOutputs = (stations, points) => {
+const returnPowerOutputs = (stations, points) => {
   const powerEntities = findBestStationForEachPoint(stations, points);
-  powerEntities.forEach(entity => {
+  let response;
+  return powerEntities.map((entity) => {
     if (entity.power) {
-      console.log(
-        `Best link station for point (${entity.point.x},${
-          entity.point.y
-        }) is (${entity.station.x},${
-          entity.station.y
-        }) with power: ${entity.power.toFixed(2)}`
-      );
+      response = `Best link station for point (${entity.point.x},${
+        entity.point.y
+      }) is (${entity.station.x},${
+        entity.station.y
+      }) with power: ${entity.power.toFixed(2)}`;
     } else {
-      console.log(
-        `No link station within reach for point (${entity.point.x},${entity.point.y})`
-      );
+      response = `No link station within reach for point (${entity.point.x},${entity.point.y})`;
     }
+    return { response, ...entity };
   });
 };
 
-logPowerOutputs(stations, points);
+exports.returnPowerOutputs = returnPowerOutputs;
+exports.calculateDistance = calculateDistance;
+exports.calculatePower = calculatePower;
+exports.findBestStationForEachPoint = findBestStationForEachPoint;
