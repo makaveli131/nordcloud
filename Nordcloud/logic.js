@@ -50,7 +50,7 @@ const calculatePower = (reach, distance) => Math.abs((reach - distance) ** 2);
 const calculateDistance = (station, point) =>
   Math.sqrt(
     Math.abs(point[0] - station[0][0]) ** 2 +
-      Math.abs(point[1] - station[0][1] ** 2)
+      Math.abs(point[1] - station[0][1]) ** 2
   );
 
 /**
